@@ -44,6 +44,7 @@ class FolderHandler(FileSystemEventHandler):
         self.target_folder_path = target_folder_path
         self.last_modified = {}
         self.cooldown = 1
+        self.recently_created = set()  # 최근 생성된 파일 추적
 
     def get_file_metadata(self, file_path):
         try:
@@ -68,22 +69,42 @@ class FolderHandler(FileSystemEventHandler):
             return None
 
     def notify_clients(self, event_type: str, file_path: str):
-        metadata = self.get_file_metadata(file_path)
-        if metadata:
+        if event_type == "deleted":
+            # 삭제 이벤트의 경우 기본 정보만 전송
             message = {
                 "type": event_type,
-                "metadata": metadata,
+                "metadata": {
+                    "path": file_path,
+                    "name": os.path.basename(file_path)
+                },
                 "timestamp": time.time()
             }
             manager.sync_notify(message)
+        else:
+            # 다른 이벤트의 경우 기존 로직 유지
+            metadata = self.get_file_metadata(file_path)
+            if metadata:
+                message = {
+                    "type": event_type,
+                    "metadata": metadata,
+                    "timestamp": time.time()
+                }
+                manager.sync_notify(message)
             
+
     def on_created(self, event):
         if not event.is_directory:
             logger.info(f"File created: {event.src_path}")
+            self.recently_created.add(event.src_path)
             self.notify_clients("created", event.src_path)
 
     def on_modified(self, event):
         if not event.is_directory:
+            # 최근 생성된 파일의 수정 이벤트는 무시
+            if event.src_path in self.recently_created:
+                self.recently_created.remove(event.src_path)
+                return
+                
             current_time = time.time()
             last_modified = self.last_modified.get(event.src_path, 0)
             if current_time - last_modified > self.cooldown:
@@ -94,6 +115,12 @@ class FolderHandler(FileSystemEventHandler):
     def on_deleted(self, event):
         if not event.is_directory:
             logger.info(f"File deleted: {event.src_path}")
+            # recently_created 세트에서 제거
+            if event.src_path in self.recently_created:
+                self.recently_created.remove(event.src_path)
+            # last_modified 딕셔너리에서 제거
+            if event.src_path in self.last_modified:
+                del self.last_modified[event.src_path]
             self.notify_clients("deleted", event.src_path)
 
 class WatchdogThread:
