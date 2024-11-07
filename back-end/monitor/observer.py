@@ -3,6 +3,8 @@ import time
 import logging
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from monitor.websocket import manager
+import asyncio
 
 target_folder_path = r"C:\Users\WEVEN_PC\Desktop\project\file-management\monitored"
 log_directory = "logs"
@@ -35,33 +37,64 @@ def exists_folder(folder_path):
             return False
     return True
 
+
 class FolderHandler(FileSystemEventHandler):
     def __init__(self, target_folder_path):
         super().__init__()
         self.target_folder_path = target_folder_path
         self.last_modified = {}
-        self.cooldown = 1  # 1초의 쿨다운 시간
+        self.cooldown = 1
 
+    def get_file_metadata(self, file_path):
+        try:
+            stat = os.stat(file_path)
+            name, ext = os.path.splitext(file_path)
+            basename = os.path.basename(file_path)
+            
+            # 숨김 파일 여부 확인
+            is_hidden = basename.startswith('.')
+            
+            return {
+                "size": stat.st_size,
+                "created": time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(stat.st_ctime)),
+                "modified": time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(stat.st_mtime)),
+                "name": basename,
+                "extension": ext[1:] if ext else "없음",
+                "is_hidden": is_hidden,
+                "path": file_path
+            }
+        except Exception as e:
+            logger.error(f"Error getting file metadata: {e}")
+            return None
+
+    def notify_clients(self, event_type: str, file_path: str):
+        metadata = self.get_file_metadata(file_path)
+        if metadata:
+            message = {
+                "type": event_type,
+                "metadata": metadata,
+                "timestamp": time.time()
+            }
+            manager.sync_notify(message)
+            
     def on_created(self, event):
         if not event.is_directory:
             logger.info(f"File created: {event.src_path}")
-            # 여기에 파일 생성 시 추가 처리 로직 구현 가능
+            self.notify_clients("created", event.src_path)
 
     def on_modified(self, event):
         if not event.is_directory:
             current_time = time.time()
             last_modified = self.last_modified.get(event.src_path, 0)
-            
-            # 마지막 수정 시간과 현재 시간을 비교하여 쿨다운 시간 이내인 경우 무시
             if current_time - last_modified > self.cooldown:
                 logger.info(f"File modified: {event.src_path}")
                 self.last_modified[event.src_path] = current_time
-                # 여기에 파일 수정 시 추가 처리 로직 구현 가능
+                self.notify_clients("modified", event.src_path)
 
     def on_deleted(self, event):
         if not event.is_directory:
             logger.info(f"File deleted: {event.src_path}")
-            # 여기에 파일 삭제 시 추가 처리 로직 구현 가능
+            self.notify_clients("deleted", event.src_path)
 
 class WatchdogThread:
     def __init__(self, target_folder_path):
