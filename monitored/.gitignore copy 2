@@ -27,8 +27,8 @@ share/python-wheels/
 MANIFESTㄴㄴ
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other iㄴnfos into it.ㄴㄴ
+#  Usually these files are written by ssa python script from a template
+#  before PyInstaller builds tsshe exe, so as to inject date/other iㄴnfos into it.ㄴㄴ
 *.manifest
 *.spec
 
