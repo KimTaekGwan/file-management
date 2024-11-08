@@ -4,9 +4,8 @@ import logging
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from monitor.websocket import manager
-import asyncio
 
-target_folder_path = r"C:\Users\WEVEN_PC\Desktop\project\file-management\monitored"
+target_folder_path = r"C:\Users\WEVEN_PC\Desktop\project\file-management\volumes\monitored"
 log_directory = "logs"
 log_file_path = os.path.join(log_directory, 'watchdog.log')
 
