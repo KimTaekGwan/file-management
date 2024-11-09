@@ -3,6 +3,10 @@ from typing import List
 import asyncio
 from queue import Queue
 import json
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class ConnectionManager:
     def __init__(self):
@@ -18,30 +22,39 @@ class ConnectionManager:
         self.active_connections.remove(websocket)
 
     async def broadcast(self, message: dict):
+        if not self.active_connections:
+            return
+
         disconnected = []
         for connection in self.active_connections:
             try:
                 await connection.send_json(message)
-            except:
+            except Exception as e:
+                logger.error(f"Error broadcasting message: {e}")
                 disconnected.append(connection)
-        
+
         for conn in disconnected:
-            self.active_connections.remove(conn)
+            try:
+                self.active_connections.remove(conn)
+            except ValueError:
+                pass
 
     def sync_notify(self, message: dict):
         self.message_queue.put(message)
 
     async def process_queue(self):
-        try:
-            while self.is_running:
+        while self.is_running:
+            try:
                 if not self.message_queue.empty():
                     message = self.message_queue.get()
                     await self.broadcast(message)
                 await asyncio.sleep(0.1)
-        except Exception as e:
-            print(f"Error in process_queue: {e}")
+            except Exception as e:
+                logger.error(f"Error in process_queue: {e}")
+                continue
 
     def stop(self):
         self.is_running = False
+
 
 manager = ConnectionManager()
