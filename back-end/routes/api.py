@@ -119,4 +119,28 @@ async def refresh_filesystem():
     return {"status": "success", "message": "File system refreshed"}
 
 
+@router.post("/filesystem/node/{node_uuid}/description")
+async def update_node_description(node_uuid: str, description: str):
+    """노드 설명 업데이트"""
+    if not file_system:
+        raise HTTPException(status_code=404, detail="File system not initialized")
+
+    node = file_system.nodes.get(node_uuid)
+    if not node:
+        raise HTTPException(status_code=404, detail="Node not found")
+
+    metadata = node.metadata.copy()
+    metadata["description"] = description
+    updated_node = file_system.update_node(node.path, metadata)
+
+    return {
+        "status": "success",
+        "node": {
+            "uuid": updated_node.uuid,
+            "name": updated_node.name,
+            "description": updated_node.metadata.get("description"),
+        },
+    }
+
+
 # 여기에 추가 API 엔드포인트를 정의할 수 있습니다

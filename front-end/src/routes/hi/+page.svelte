@@ -23,7 +23,7 @@
     }
 
     function connectWebSocket() {
-        ws = new WebSocket('ws://localhost:8000/monitor/ws');
+        ws = new WebSocket('ws://localhost:8000/ws/monitor');
         
         ws.onopen = () => {
             connectionStatus = 'Connected';
@@ -33,6 +33,17 @@
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
             console.log('Received message:', data);
+            if (!data.metadata) {
+                data.metadata = {
+                    name: '',
+                    extension: '',
+                    size: 0,
+                    created: '',
+                    modified: '',
+                    path: '',
+                    is_hidden: false
+                };
+            }
             messages = [data, ...messages].slice(0, 100);
         };
 

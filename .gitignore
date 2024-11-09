@@ -1,5 +1,6 @@
 # Custom
-volumes/monitored/*
+volumes/monitored/**/*
+
 
 
 

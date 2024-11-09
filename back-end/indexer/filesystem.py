@@ -13,8 +13,8 @@ class FileNode:
         self.parent = None
         self.children = []
         self.metadata = {}
-        self.created_at = datetime.now()
-        self.modified_at = datetime.now()
+        self.created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.modified_at = self.created_at
 
 
 class FileSystem:
@@ -120,7 +120,7 @@ class FileSystem:
 
         # 메타데이터 업데이트
         node.metadata.update(metadata)
-        node.modified_at = datetime.now()
+        node.modified_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         # 노드 맵 갱신
         self.nodes[node_uuid] = node

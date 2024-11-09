@@ -13,12 +13,20 @@ class FileSystemScanner:
         self.file_system.root_path = root_path  # root_path 설정
 
     def get_metadata(self, path: str) -> dict:
+        """파일의 메타데이터를 가져옵니다"""
         stat = os.stat(path)
         return {
-            "size": stat.st_size,
-            "created": datetime.fromtimestamp(stat.st_ctime),
-            "modified": datetime.fromtimestamp(stat.st_mtime),
-            "is_hidden": os.path.basename(path).startswith("."),
+            "size": stat.st_size,  # 파일 크기 (바이트)
+            "created": datetime.fromtimestamp(stat.st_ctime).strftime(
+                "%Y-%m-%d %H:%M:%S"
+            ),  # 생성일시
+            "modified": datetime.fromtimestamp(stat.st_mtime).strftime(
+                "%Y-%m-%d %H:%M:%S"
+            ),  # 수정일시
+            "is_hidden": os.path.basename(path).startswith("."),  # 숨김 파일 여부
+            "permissions": oct(stat.st_mode)[-3:],  # 파일 권한
+            "owner": stat.st_uid,  # 소유자 ID
+            "group": stat.st_gid,  # 그룹 ID
         }
 
     def scan(self) -> None:

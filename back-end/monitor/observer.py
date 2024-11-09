@@ -4,7 +4,7 @@ import logging
 import shutil
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-from monitor.websocket import manager
+from websocket.file_monitor_ws import file_monitor_manager
 
 target_folder_path = "volumes/monitored"
 log_directory = "logs"
@@ -46,6 +46,7 @@ class FolderHandler(FileSystemEventHandler):
         self.last_modified = {}
         self.cooldown = 1
         self.recently_created = set()  # 최근 생성된 파일 추적
+        self.creation_cooldown = 2  # 생성 이벤트 후 수정 이벤트 무시 시간
 
     def get_file_metadata(self, file_path):
         try:
@@ -78,7 +79,7 @@ class FolderHandler(FileSystemEventHandler):
                 "metadata": {"path": file_path, "name": os.path.basename(file_path)},
                 "timestamp": time.time(),
             }
-            manager.sync_notify(message)
+            file_monitor_manager.sync_notify(message)
         else:
             # 다른 이벤트의 경우 기존 로직 유지
             metadata = self.get_file_metadata(file_path)
@@ -88,7 +89,7 @@ class FolderHandler(FileSystemEventHandler):
                     "metadata": metadata,
                     "timestamp": time.time(),
                 }
-                manager.sync_notify(message)
+                file_monitor_manager.sync_notify(message)
 
     def on_created(self, event):
         abs_path = os.path.abspath(event.src_path)
@@ -109,35 +110,38 @@ class FolderHandler(FileSystemEventHandler):
                 abs_path, is_directory=event.is_directory
             )
             node.metadata = metadata
+            self.recently_created.add(abs_path)
+            self.last_modified[abs_path] = time.time()
+            # 클라이언트에 생성 이벤트 알림
             self.notify_clients("created", abs_path)
         else:
             logger.error(f"Failed to get metadata for: {abs_path}")
 
     def on_modified(self, event):
         if not event.is_directory:
-            if event.src_path in self.recently_created:
-                self.recently_created.remove(event.src_path)
-                return
-
             current_time = time.time()
-            last_modified = self.last_modified.get(event.src_path, 0)
-            if current_time - last_modified > self.cooldown:
-                logger.info(f"File modified: {event.src_path}")
+            abs_path = os.path.abspath(event.src_path)
 
-                # 파일이 실제로 존재하는지 확인
-                if not os.path.exists(event.src_path):
-                    logger.warning(f"Modified file does not exist: {event.src_path}")
+            # 최근 생성된 파일의 수정 이벤트인 경우 무시
+            if abs_path in self.recently_created:
+                last_created_time = self.last_modified.get(abs_path, 0)
+                if current_time - last_created_time < self.creation_cooldown:
+                    return
+                self.recently_created.remove(abs_path)
+
+            last_modified = self.last_modified.get(abs_path, 0)
+            if current_time - last_modified > self.cooldown:
+                logger.info(f"File modified: {abs_path}")
+
+                if not os.path.exists(abs_path):
+                    logger.warning(f"Modified file does not exist: {abs_path}")
                     return
 
-                metadata = self.get_file_metadata(event.src_path)
+                metadata = self.get_file_metadata(abs_path)
                 if metadata:
-                    self.file_system.update_node(event.src_path, metadata)
-                    self.last_modified[event.src_path] = current_time
-                    self.notify_clients("modified", event.src_path)
-                else:
-                    logger.warning(
-                        f"Skipping update for {event.src_path}: Unable to get metadata"
-                    )
+                    self.file_system.update_node(abs_path, metadata)
+                    self.last_modified[abs_path] = current_time
+                    self.notify_clients("modified", abs_path)
 
     def on_deleted(self, event):
         if not event.is_directory:

@@ -16,7 +16,7 @@
     }
 
     function connectWebSocket() {
-        ws = new WebSocket('ws://localhost:8000/monitor/ws');
+        ws = new WebSocket('ws://localhost:8000/monitor/ws/monitor');
         
         ws.onopen = () => {
             connectionStatus = 'Connected';

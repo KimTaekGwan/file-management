@@ -1,0 +1,622 @@
+{
+  "d3d44851-a19a-48a2-8be3-1a47f5f318e1": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "size": 0,
+      "created": "2024-11-09 17:24:30",
+      "modified": "2024-11-09 17:24:30",
+      "is_hidden": false,
+      "permissions": "644",
+      "owner": 501,
+      "group": 20,
+      "description": "가나"
+    },
+    "description": "가나",
+    "modified_time": "2024-11-09 17:24:30",
+    "last_checked": "2024-11-09 18:44:39"
+  },
+  "fa700743-d9fe-45e0-9345-7ff19a7dfa6c": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:49:19"
+  },
+  "d6ff0800-763b-4ec2-9552-ac6bdff88698": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:49:19"
+  },
+  "1c69e59b-0a41-4a05-81dc-bb91eafb9523": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:50:00"
+  },
+  "ac2d48a9-0fc8-4bc2-9e66-2231dcd2940c": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:50:00"
+  },
+  "7b2a3fa2-d250-47ae-8fad-b3100c1ef8d2": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:50:31"
+  },
+  "e49b670a-6ac0-4b7f-9813-ac4be8e401b5": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:50:31"
+  },
+  "a54c8f42-e886-43c6-8f3d-af8002299934": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:50:43"
+  },
+  "2a5e69cf-8897-43c0-b5f3-bb117a92b398": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:50:43"
+  },
+  "7027ceae-84d1-4b55-847d-7d18e859c60b": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:05"
+  },
+  "56e26f1e-92c7-44e2-861f-e20b7789acef": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:05"
+  },
+  "f797d1b2-aa5d-4978-8d77-e2562a8a4d99": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:26"
+  },
+  "a251fa88-308d-41e1-a59a-bb363dc751a9": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:26"
+  },
+  "cd610ef8-36ae-44f5-bd87-2567fd40f7e2": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:26"
+  },
+  "724ef8bf-2058-4ca2-8d24-4bf5e69f5e69": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:26"
+  },
+  "0822327a-b97f-499c-a033-e8a9a0bff93d": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:26"
+  },
+  "a4fc8d44-e385-40c4-8431-b7abfb5a9740": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:26"
+  },
+  "2ab00bd9-2dc1-4ba5-af4c-d75925f831e5": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:45"
+  },
+  "56125379-2d2f-46d3-868c-59f016dd9397": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:45"
+  },
+  "92f68d85-fa14-405a-8c78-f435525fd2fd": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:45"
+  },
+  "0762eed3-6a4b-473d-a961-503ac66abbbf": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:45"
+  },
+  "5f0e1d63-301c-456e-b5d8-0c642856587b": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:45"
+  },
+  "9f72bc4f-a57a-4ef9-aa26-a8faf0613a06": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:45"
+  },
+  "5d551c63-7fdd-46f1-85e7-f7b55c0c6f0f": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:48"
+  },
+  "832bb09e-11c3-498b-83fa-d99ae79a4c5f": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:48"
+  },
+  "da70608e-aab5-4c12-ada2-bc974344707e": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:48"
+  },
+  "b53aff37-83e9-43d8-8e2b-0974a2dbbc2c": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:48"
+  },
+  "5ff6f828-e332-4d61-9ee6-3c051ae24ac1": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:48"
+  },
+  "19c84e32-f491-45d1-913f-e6ddec56f0b3": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:51:48"
+  },
+  "4ac99d7a-fed3-4b12-874e-fe39c5998604": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:08"
+  },
+  "5d3a1b6e-cf21-40ad-947b-8605e64ff09a": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:08"
+  },
+  "253f5c3c-f305-4907-95d7-34478e2dc210": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:08"
+  },
+  "9d1ba787-e295-4c90-b236-657fb4a33490": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:08"
+  },
+  "e026b19f-72f8-4d06-b7d4-48807e69bab1": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:08"
+  },
+  "2ff6be7a-5555-4f3c-8c88-93ec4bc08c46": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:08"
+  },
+  "b0d3f42f-b14a-457b-8a2b-ef4c026401e2": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:17"
+  },
+  "af4f3f25-6830-43e6-ab17-7690e4be7330": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:17"
+  },
+  "47d4d870-3ca8-4572-814b-2d3a9baf7997": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:17"
+  },
+  "3109f3bc-4db4-4e55-b2b7-c188bf7e1d94": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:17"
+  },
+  "853cb6f2-85c6-4b61-b2a6-e51c11067941": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:17"
+  },
+  "2244ad79-c177-4c6f-bb3d-f6ee8fbc0b1e": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {
+      "description": ""
+    },
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:17"
+  },
+  "45e26600-a683-4ab0-a126-37b40bc976ef": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:27"
+  },
+  "40a32417-c33a-4f4d-ae0c-9286d0e83908": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:27"
+  },
+  "353fe6c8-d007-4c37-9ab6-31e64535b845": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:27"
+  },
+  "d7ba660b-4cba-4e86-b688-26772fb515d3": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:27"
+  },
+  "dfce95b3-2cc4-4042-b7a3-5622d21023c5": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:27"
+  },
+  "f753320e-2bff-4603-ba5d-9352e48e1acf": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:52:27"
+  },
+  "247d3f28-0cfe-4bc5-8238-7de08a99d8c4": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:42"
+  },
+  "43c56e42-6051-4c70-af3e-3fbb7f695e5c": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:42"
+  },
+  "a97133fc-1eac-4db4-af7b-14631c6bbe2c": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:42"
+  },
+  "5e98b21f-0586-4cb1-a24a-255707463ef4": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:42"
+  },
+  "126193bd-e413-4f77-89a0-61a398d9971a": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:42"
+  },
+  "c45f3d2b-84b4-4391-a40d-d1813cc2205b": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:42"
+  },
+  "b7554714-6918-4a25-ab5f-13d82be79d9e": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored",
+    "name": "monitored",
+    "is_directory": true,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:46"
+  },
+  "58bf5325-1151-449d-812e-a02da887c59a": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ",
+    "name": "ㅈㅈㅈ",
+    "is_directory": true,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:46"
+  },
+  "c385716d-cd36-4139-b9c5-638733e00f4f": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy 2",
+    "name": "error_check copy 2",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:46"
+  },
+  "8f0632e1-2bc2-43d4-abc1-ed9966d8b894": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:46"
+  },
+  "a4c882f1-042a-4b91-8036-8b77546a7bfd": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/error_check copy",
+    "name": "error_check copy",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:46"
+  },
+  "6c6e37e5-2da6-4f06-84c2-acb4d77b7df7": {
+    "path": "/Users/ktg/Desktop/project/file-management/back-end/volumes/monitored/ㅈㅈㅈ/error_check",
+    "name": "error_check",
+    "is_directory": false,
+    "metadata": {},
+    "description": "",
+    "modified_time": "",
+    "last_checked": "2024-11-09 18:54:46"
+  }
+}

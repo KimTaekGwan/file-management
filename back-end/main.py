@@ -8,12 +8,16 @@ from contextlib import asynccontextmanager
 
 from routes import monitor, api
 from monitor.observer import WatchdogThread, target_folder_path
-from monitor.websocket import manager
+
+# from monitor.websocket import manager
 from indexer.filesystem import FileSystem
 from indexer.scanner import FileSystemScanner
+from websocket.file_monitor_ws import file_monitor_manager
+from websocket.file_system_ws import FileSystemManager
 
 file_system = FileSystem()
 watchdog_thread = WatchdogThread(target_folder_path, file_system)
+file_system_manager = FileSystemManager(file_system)  # 추가
 
 
 async def start():
@@ -32,14 +36,18 @@ async def start():
 
     # Start watchdog thread and process queue
     watchdog_thread.start()
-    asyncio.create_task(manager.process_queue())
+    # asyncio.create_task(manager.process_queue())
+    asyncio.create_task(file_monitor_manager.process_queue())
+    asyncio.create_task(file_system_manager.process_queue())
 
 
 def shutdown():
     print("service is stopped.")
     # Stop watchdog thread and manager
     watchdog_thread.stop()
-    manager.stop()
+    file_monitor_manager.stop()
+    file_system_manager.stop()
+    # manager.stop()
 
 
 @asynccontextmanager
@@ -51,7 +59,8 @@ async def lifespan(app: FastAPI):
 
 def include_router(app: FastAPI):
     api.initialize_router(file_system)
-    app.include_router(monitor.router, prefix="/monitor", tags=["monitor"])
+    monitor.initialize_router(file_system_manager)  # 이미 생성된 manager 전달
+    app.include_router(monitor.router, prefix="/ws", tags=["websocket"])
     app.include_router(api.router, prefix="/api", tags=["api"])
 
 
@@ -80,7 +89,8 @@ def start_application():
         CORSMiddleware,
         allow_origins=origins,
         allow_credentials=True,
-        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        # allow_methods=["GET", "POST", "PUT", "DELETE"],
+        allow_methods=["*"],
         allow_headers=["*"],
     )
 
