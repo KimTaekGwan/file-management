@@ -6,7 +6,8 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from websocket.file_monitor_ws import file_monitor_manager
 
-target_folder_path = "volumes/monitored"
+# target_folder_path = "volumes/monitored"
+target_folder_path = r"C:\Users\WEVEN_PC\Desktop\project\file-management\volumes\monitored"
 log_directory = "logs"
 log_file_path = os.path.join(log_directory, "watchdog.log")
 

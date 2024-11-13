@@ -2,6 +2,7 @@ import os
 import uuid
 from datetime import datetime
 from typing import Optional
+from indexer.file_indexer import FileIndexer
 
 
 class FileNode:
@@ -18,19 +19,27 @@ class FileNode:
 
 
 class FileSystem:
-    def __init__(self):
+    def __init__(self, file_indexer: FileIndexer):
         self.root = None
         self.root_path = None  # root_path 추가
         self.nodes = {}  # uuid -> node
         self.path_index = {}  # path -> uuid
         self.event_handlers = []  # 이벤트 핸들러 리스트
-
+        self.file_indexer = file_indexer  # FileIndexer 인스턴스 추가
     def subscribe(self, handler):
         """이벤트 핸들러 등록"""
         self.event_handlers.append(handler)
 
     def notify_event(self, event_type: str, node: FileNode):
         """이벤트 발생 시 등록된 핸들러들에게 통지"""
+        # FileIndexer에 이벤트 기록
+        self.file_indexer.add_event(
+            event_type=event_type,
+            file_path=node.path,
+            metadata=node.metadata
+        )
+        
+        # 기존 이벤트 핸들러 호출
         for handler in self.event_handlers:
             handler(event_type, node)
 

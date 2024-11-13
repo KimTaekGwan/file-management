@@ -37,12 +37,17 @@ class FileSystemScanner:
             print(f"Creating directory: {self.root_path}")
             os.makedirs(self.root_path)
 
+        # 루트 노드 생성 및 메타데이터 설정
         root_node = self.file_system.create_node(self.root_path, is_directory=True)
-        print(f"Root node created: {root_node.uuid}")
-        print(
-            f"FileSystem root node: {self.file_system.root.uuid if self.file_system.root else None}"
+        root_metadata = self.get_metadata(self.root_path)
+        root_node.metadata = root_metadata
+        
+        # FileIndexer에 루트 노드 기록
+        self.file_system.file_indexer.add_event(
+            event_type="created",
+            file_path=self.root_path,
+            metadata=root_metadata
         )
-        root_node.metadata = self.get_metadata(self.root_path)
 
         # 파일 시스템 스캔
         for root, dirs, files in os.walk(self.root_path):
@@ -51,7 +56,14 @@ class FileSystemScanner:
                 path = os.path.join(root, dir_name)
                 try:
                     node = self.file_system.create_node(path, is_directory=True)
-                    node.metadata = self.get_metadata(path)
+                    metadata = self.get_metadata(path)
+                    node.metadata = metadata
+                    # FileIndexer에 디렉토리 노드 기록
+                    self.file_system.file_indexer.add_event(
+                        event_type="created",
+                        file_path=path,
+                        metadata=metadata
+                    )
                 except Exception as e:
                     logger.error(f"Error creating directory node {path}: {e}")
 
@@ -60,6 +72,13 @@ class FileSystemScanner:
                 path = os.path.join(root, file_name)
                 try:
                     node = self.file_system.create_node(path, is_directory=False)
-                    node.metadata = self.get_metadata(path)
+                    metadata = self.get_metadata(path)
+                    node.metadata = metadata
+                    # FileIndexer에 파일 노드 기록
+                    self.file_system.file_indexer.add_event(
+                        event_type="created",
+                        file_path=path,
+                        metadata=metadata
+                    )
                 except Exception as e:
                     logger.error(f"Error creating file node {path}: {e}")

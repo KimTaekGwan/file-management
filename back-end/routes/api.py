@@ -143,4 +143,29 @@ async def update_node_description(node_uuid: str, description: str):
     }
 
 
-# 여기에 추가 API 엔드포인트를 정의할 수 있습니다
+@router.get("/filesystem/history")
+async def get_filesystem_history(
+    file_path: Optional[str] = None,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+    event_type: Optional[str] = None
+):
+    """파일 시스템 변경 이력 조회"""
+    if not file_system:
+        raise HTTPException(status_code=404, detail="File system not initialized")
+    
+    history = file_system.file_indexer.get_file_history(
+        file_path=file_path,
+        start_date=start_date,
+        end_date=end_date,
+        event_type=event_type
+    )
+    return {"history": history}
+
+@router.get("/filesystem/stats")
+async def get_filesystem_stats():
+    """파일 시스템 통계 정보"""
+    if not file_system:
+        raise HTTPException(status_code=404, detail="File system not initialized")
+    
+    return file_system.file_indexer.get_statistics()

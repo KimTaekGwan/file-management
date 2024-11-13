@@ -1,3 +1,4 @@
+import os
 import asyncio
 
 from fastapi import FastAPI
@@ -14,14 +15,29 @@ from indexer.filesystem import FileSystem
 from indexer.scanner import FileSystemScanner
 from websocket.file_monitor_ws import file_monitor_manager
 from websocket.file_system_ws import FileSystemManager
+from indexer.file_indexer import FileIndexer
 
-file_system = FileSystem()
+# 로그 디렉토리 설정
+LOG_DIRECTORY = os.path.join(os.path.dirname(__file__), "logs")
+
+# FileIndexer 초기화
+file_indexer = FileIndexer(LOG_DIRECTORY)
+
+# FileSystem 초기화 (FileIndexer 주입)
+file_system = FileSystem(file_indexer)
+
+# WatchdogThread 및 FileSystemManager 초기화
 watchdog_thread = WatchdogThread(target_folder_path, file_system)
 file_system_manager = FileSystemManager(file_system)  # 추가
 
 
 async def start():
-    print("service is started.")
+    print("Service is starting...")
+    
+    # 로그 디렉토리 생성
+    os.makedirs(LOG_DIRECTORY, exist_ok=True)
+    print(f"Log directory initialized: {LOG_DIRECTORY}")
+    
     # 파일 시스템 초기화
     scanner = FileSystemScanner(target_folder_path, file_system)
     print(f"Scanning directory: {target_folder_path}")
@@ -33,28 +49,31 @@ async def start():
         print(f"Available nodes: {list(file_system.nodes.keys())}")
     else:
         print(f"Root node initialized: {file_system.root.uuid}")
+        
+    # FileIndexer 상태 확인
+    print(f"FileIndexer initialized with {len(file_indexer.index)} indexed files")
+    print(f"File history contains {len(file_indexer.history)} events")
 
-    # Start watchdog thread and process queue
+    # Start watchdog thread and process queues
     watchdog_thread.start()
-    # asyncio.create_task(manager.process_queue())
     asyncio.create_task(file_monitor_manager.process_queue())
     asyncio.create_task(file_system_manager.process_queue())
 
-
-def shutdown():
-    print("service is stopped.")
-    # Stop watchdog thread and manager
+async def shutdown():
+    print("Service is shutting down...")
     watchdog_thread.stop()
     file_monitor_manager.stop()
     file_system_manager.stop()
     # manager.stop()
-
+    file_indexer.save_index()
+    file_indexer.save_history()
+    print("FileIndexer data saved")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await start()
     yield
-    shutdown()
+    await shutdown()
 
 
 def include_router(app: FastAPI):

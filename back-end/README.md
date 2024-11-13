@@ -17,6 +17,8 @@ graph LR
     Created[파일 생성 감지]
     Modified[파일 수정 감지]
     Deleted[파일 삭제 감지]
+    ViewHistory[파일 변경 이력 조회]
+    ViewStats[파일 시스템 통계 조회]
 
     %% 관계 정의
     Client --> ViewTree
@@ -26,10 +28,14 @@ graph LR
     Client --> UpdateDesc
     Client --> WSConnect
     Client --> Monitor
+    Client --> ViewHistory
+    Client --> ViewStats
 
     FileSystem --> Created
     FileSystem --> Modified
     FileSystem --> Deleted
+    FileSystem --> ViewHistory
+    FileSystem --> ViewStats
 
     Monitor --> Created
     Monitor --> Modified
@@ -46,11 +52,14 @@ sequenceDiagram
     participant Scanner as FileScanner
     participant Observer as FileObserver
     participant Store as MetadataStore
+    participant FileIndexer as FileIndexer
 
     %% 1. 애플리케이션 시작
     Client->>API: 애플리케이션 시작
     API->>Scanner: 초기 파일시스템 스캔<br>/main.py : start()
     Scanner->>FS: 파일시스템 초기화<br>/indexer/scanner.py : scan()
+    Scanner->>Store: 메타데이터 로드<br>/indexer/scanner.py : get_metadata()
+    Scanner->>FileIndexer: 인덱스 및 히스토리 로드<br>/indexer/scanner.py : load_index()
     API->>Observer: 파일 감시 시작<br>/main.py : watchdog_thread.start()
     API->>WS: 웹소켓 매니저 시작<br>/main.py : file_system_manager.process_queue()
 
@@ -62,6 +71,7 @@ sequenceDiagram
     API->>Scanner: 파일 시스템 스캔 요청<br>/routes/api.py : refresh_filesystem()
     Scanner->>FS: 파일 시스템 초기화<br>/indexer/scanner.py : scan()
     Scanner->>Store: 메타데이터 로드<br>/indexer/scanner.py : get_metadata()
+    Scanner->>FileIndexer: 인덱스 및 히스토리 로드<br>/indexer/scanner.py : load_index()
     API->>Observer: 파일 감시 시작<br>/monitor/observer.py : start()
 
     %% 4. 파일 트리 조회
@@ -94,6 +104,7 @@ sequenceDiagram
     Note over Observer,Store: 파일 변경 감지
     Observer->>FS: 파일 변경 통지<br>/indexer/filesystem.py : notify_event()
     FS->>Store: 메타데이터 업데이트<br>/indexer/filesystem.py : update_node()
+    FS->>FileIndexer: 이벤트 기록<br>/indexer/filesystem.py : add_event()
     FS->>WS: 변경 이벤트 전파<br>/websocket/file_system_ws.py : handle_filesystem_event()
     WS-->>Client: 실시간 업데이트<br>/websocket/websocket_base.py : sync_notify()
 
@@ -229,4 +240,6 @@ classDiagram
     FolderHandler --> FileMonitorManager : 이벤트 전달
     FileSystem --> FileSystemManager : 이벤트 전달
     WatchdogThread --> FileSystem : 사용
+    FileSystem --> FileIndexer : 사용
+    FileIndexer --> MetadataStore : 사용
 ```
